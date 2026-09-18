@@ -4,6 +4,7 @@ const QUESTIONS = [
   {
     id: "kh-01",
     category: "한국사",
+    difficulty: "쉬움",
     question: "1443년에 훈민정음을 창제한 조선의 왕은?",
     choices: ["세종", "태종", "세조", "성종"],
     answer: "세종",
@@ -13,6 +14,7 @@ const QUESTIONS = [
   {
     id: "kh-02",
     category: "한국사",
+    difficulty: "쉬움",
     question: "918년에 고려를 건국한 인물은?",
     choices: ["왕건", "궁예", "견훤", "김부"],
     answer: "왕건",
@@ -22,6 +24,7 @@ const QUESTIONS = [
   {
     id: "kh-03",
     category: "한국사",
+    difficulty: "쉬움",
     question: "1592년 한산도 앞바다에서 학익진으로 일본 수군을 크게 무찌른 조선의 장수는?",
     choices: ["이순신", "권율", "김시민", "곽재우"],
     answer: "이순신",
@@ -31,6 +34,7 @@ const QUESTIONS = [
   {
     id: "kh-04",
     category: "한국사",
+    difficulty: "보통",
     question: "고려 후기의 승려 일연이 고조선부터 후삼국까지의 이야기를 모아 편찬한 역사서는?",
     choices: ["삼국유사", "삼국사기", "고려사", "동국통감"],
     answer: "삼국유사",
@@ -40,6 +44,7 @@ const QUESTIONS = [
   {
     id: "kh-05",
     category: "한국사",
+    difficulty: "쉬움",
     question: "3·1 운동이 일어난 해는?",
     choices: ["1919년", "1910년", "1926년", "1945년"],
     answer: "1919년",
@@ -49,6 +54,7 @@ const QUESTIONS = [
   {
     id: "kh-06",
     category: "한국사",
+    difficulty: "보통",
     question: "1919년 4월 11일에 수립된 대한민국 임시정부가 있던 도시는?",
     choices: ["상하이", "도쿄", "베이징", "블라디보스토크"],
     answer: "상하이",
@@ -58,6 +64,7 @@ const QUESTIONS = [
   {
     id: "kh-07",
     category: "한국사",
+    difficulty: "어려움",
     question: "조선의 기본 법전인 『경국대전』을 완성해 시행한 왕은?",
     choices: ["성종", "세종", "태조", "영조"],
     answer: "성종",
@@ -67,6 +74,7 @@ const QUESTIONS = [
   {
     id: "kh-08",
     category: "한국사",
+    difficulty: "보통",
     question: "660년 황산벌에서 5,000명의 결사대를 이끌고 신라군에 맞선 백제의 장군은?",
     choices: ["계백", "김유신", "을지문덕", "관창"],
     answer: "계백",
@@ -76,6 +84,7 @@ const QUESTIONS = [
   {
     id: "kh-09",
     category: "한국사",
+    difficulty: "보통",
     question: "몸이 작아 '녹두장군'이라 불린 동학 농민 운동의 지도자는?",
     choices: ["전봉준", "최제우", "김옥균", "홍경래"],
     answer: "전봉준",
@@ -85,6 +94,7 @@ const QUESTIONS = [
   {
     id: "kh-10",
     category: "한국사",
+    difficulty: "보통",
     question: "1377년 청주 흥덕사에서 금속활자로 인쇄되어 2001년 유네스코 세계기록유산에 등재된 책은?",
     choices: ["직지심체요절", "팔만대장경", "무구정광대다라니경", "조선왕조실록"],
     answer: "직지심체요절",
@@ -96,6 +106,7 @@ const QUESTIONS = [
   {
     id: "wg-01",
     category: "세계지리",
+    difficulty: "쉬움",
     question: "현재 국토 면적을 기준으로 세계에서 가장 넓은 나라는?",
     choices: ["러시아", "캐나다", "중국", "미국"],
     answer: "러시아",
@@ -105,6 +116,7 @@ const QUESTIONS = [
   {
     id: "wg-02",
     category: "세계지리",
+    difficulty: "보통",
     question: "유엔(UN) 추계에 따르면 2023년에 중국을 제치고 인구가 가장 많은 나라가 된 곳은?",
     choices: ["인도", "인도네시아", "미국", "파키스탄"],
     answer: "인도",
@@ -114,6 +126,7 @@ const QUESTIONS = [
   {
     id: "wg-03",
     category: "세계지리",
+    difficulty: "보통",
     question: "오스트레일리아의 수도는?",
     choices: ["캔버라", "시드니", "멜버른", "브리즈번"],
     answer: "캔버라",
@@ -123,6 +136,7 @@ const QUESTIONS = [
   {
     id: "wg-04",
     category: "세계지리",
+    difficulty: "보통",
     question: "1960년에 새 수도로 문을 연 브라질의 수도는?",
     choices: ["브라질리아", "리우데자네이루", "상파울루", "살바도르"],
     answer: "브라질리아",
@@ -132,6 +146,7 @@ const QUESTIONS = [
   {
     id: "wg-05",
     category: "세계지리",
+    difficulty: "보통",
     question: "에베레스트산 정상을 국경선이 지나는 두 나라는?",
     choices: ["네팔과 중국", "네팔과 인도", "인도와 파키스탄", "부탄과 중국"],
     answer: "네팔과 중국",
@@ -141,6 +156,7 @@ const QUESTIONS = [
   {
     id: "wg-06",
     category: "세계지리",
+    difficulty: "쉬움",
     question: "사하라 사막이 있는 대륙은?",
     choices: ["아프리카", "아시아", "오세아니아", "남아메리카"],
     answer: "아프리카",
@@ -150,6 +166,7 @@ const QUESTIONS = [
   {
     id: "wg-07",
     category: "세계지리",
+    difficulty: "쉬움",
     question: "면적을 기준으로 세계에서 가장 넓은 대양은?",
     choices: ["태평양", "대서양", "인도양", "북극해"],
     answer: "태평양",
@@ -159,6 +176,7 @@ const QUESTIONS = [
   {
     id: "wg-08",
     category: "세계지리",
+    difficulty: "보통",
     question: "1884년 국제 자오선 회의에서 경도 0°의 기준(본초 자오선)으로 정한 곳은?",
     choices: ["영국 그리니치", "프랑스 파리", "미국 워싱턴 D.C.", "이탈리아 로마"],
     answer: "영국 그리니치",
@@ -168,6 +186,7 @@ const QUESTIONS = [
   {
     id: "wg-09",
     category: "세계지리",
+    difficulty: "보통",
     question: "대서양과 지중해를 잇고, 에스파냐와 모로코 사이에 있는 해협은?",
     choices: ["지브롤터 해협", "보스포루스 해협", "호르무즈 해협", "말라카 해협"],
     answer: "지브롤터 해협",
@@ -177,6 +196,7 @@ const QUESTIONS = [
   {
     id: "wg-10",
     category: "세계지리",
+    difficulty: "쉬움",
     question: "지중해와 홍해를 잇는 수에즈 운하가 있는 나라는?",
     choices: ["이집트", "튀르키예", "파나마", "사우디아라비아"],
     answer: "이집트",
@@ -188,6 +208,7 @@ const QUESTIONS = [
   {
     id: "sc-01",
     category: "과학",
+    difficulty: "쉬움",
     question: "원소 기호가 Fe인 원소는?",
     choices: ["철", "불소", "납", "인"],
     answer: "철",
@@ -197,6 +218,7 @@ const QUESTIONS = [
   {
     id: "sc-02",
     category: "과학",
+    difficulty: "쉬움",
     question: "원자 번호가 1인 원소는?",
     choices: ["수소", "헬륨", "산소", "탄소"],
     answer: "수소",
@@ -206,6 +228,7 @@ const QUESTIONS = [
   {
     id: "sc-03",
     category: "과학",
+    difficulty: "쉬움",
     question: "태양과의 거리를 기준으로, 태양계 행성 가운데 태양에 가장 가까운 행성은?",
     choices: ["수성", "금성", "지구", "화성"],
     answer: "수성",
@@ -215,6 +238,7 @@ const QUESTIONS = [
   {
     id: "sc-04",
     category: "과학",
+    difficulty: "쉬움",
     question: "식물 세포에서 광합성을 맡는 세포 소기관은?",
     choices: ["엽록체", "미토콘드리아", "리보솜", "골지체"],
     answer: "엽록체",
@@ -224,6 +248,7 @@ const QUESTIONS = [
   {
     id: "sc-05",
     category: "과학",
+    difficulty: "보통",
     question: "1953년 DNA의 이중 나선 구조를 밝힌 과학자들은?",
     choices: ["왓슨과 크릭", "멘델과 다윈", "퀴리 부부", "파스퇴르와 코흐"],
     answer: "왓슨과 크릭",
@@ -233,6 +258,7 @@ const QUESTIONS = [
   {
     id: "sc-06",
     category: "과학",
+    difficulty: "쉬움",
     question: "1905년 논문에서 질량과 에너지의 관계(E=mc²)를 이끌어 낸 과학자는?",
     choices: ["아인슈타인", "뉴턴", "보어", "맥스웰"],
     answer: "아인슈타인",
@@ -242,6 +268,7 @@ const QUESTIONS = [
   {
     id: "sc-07",
     category: "과학",
+    difficulty: "보통",
     question: "공기를 이루는 비율을 기준으로, 공기에 가장 많이 들어 있는 기체는?",
     choices: ["질소", "산소", "아르곤", "이산화 탄소"],
     answer: "질소",
@@ -251,6 +278,7 @@ const QUESTIONS = [
   {
     id: "sc-08",
     category: "과학",
+    difficulty: "보통",
     question: "1928년 푸른곰팡이에서 페니실린을 발견한 과학자는?",
     choices: ["알렉산더 플레밍", "루이 파스퇴르", "로베르트 코흐", "에드워드 제너"],
     answer: "알렉산더 플레밍",
@@ -260,6 +288,7 @@ const QUESTIONS = [
   {
     id: "sc-09",
     category: "과학",
+    difficulty: "보통",
     question: "'한 물체가 다른 물체에 힘을 가하면, 다른 물체도 크기가 같고 방향이 반대인 힘을 가한다'는 법칙은?",
     choices: ["뉴턴의 운동 제3법칙", "뉴턴의 운동 제1법칙", "뉴턴의 운동 제2법칙", "만유인력의 법칙"],
     answer: "뉴턴의 운동 제3법칙",
@@ -269,6 +298,7 @@ const QUESTIONS = [
   {
     id: "sc-10",
     category: "과학",
+    difficulty: "쉬움",
     question: "소리(음파)가 전달될 수 없는 곳은?",
     choices: ["진공", "물속", "쇠막대 속", "공기 중"],
     answer: "진공",
@@ -280,6 +310,7 @@ const QUESTIONS = [
   {
     id: "ac-01",
     category: "예술과 문화",
+    difficulty: "쉬움",
     question: "루브르 박물관이 소장한 「모나리자」를 그린 화가는?",
     choices: ["레오나르도 다빈치", "미켈란젤로", "라파엘로", "렘브란트"],
     answer: "레오나르도 다빈치",
@@ -289,6 +320,7 @@ const QUESTIONS = [
   {
     id: "ac-02",
     category: "예술과 문화",
+    difficulty: "쉬움",
     question: "흔히 '운명 교향곡'이라 불리는 교향곡 제5번 C단조를 작곡한 사람은?",
     choices: ["베토벤", "모차르트", "브람스", "차이콥스키"],
     answer: "베토벤",
@@ -298,6 +330,7 @@ const QUESTIONS = [
   {
     id: "ac-03",
     category: "예술과 문화",
+    difficulty: "쉬움",
     question: "1888년 프랑스 아를에서 「해바라기」를 그린 화가는?",
     choices: ["빈센트 반 고흐", "폴 고갱", "클로드 모네", "폴 세잔"],
     answer: "빈센트 반 고흐",
@@ -307,6 +340,7 @@ const QUESTIONS = [
   {
     id: "ac-04",
     category: "예술과 문화",
+    difficulty: "쉬움",
     question: "『햄릿』, 『오셀로』, 『리어왕』, 『맥베스』를 쓴 극작가는?",
     choices: ["셰익스피어", "몰리에르", "괴테", "입센"],
     answer: "셰익스피어",
@@ -316,6 +350,7 @@ const QUESTIONS = [
   {
     id: "ac-05",
     category: "예술과 문화",
+    difficulty: "보통",
     question: "구경꾼들이 둥글게 둘러앉아 두 사람의 겨루기를 지켜보는 모습을 담은 김홍도의 풍속화는?",
     choices: ["씨름", "서당", "무동", "미인도"],
     answer: "씨름",
@@ -325,6 +360,7 @@ const QUESTIONS = [
   {
     id: "ac-06",
     category: "예술과 문화",
+    difficulty: "보통",
     question: "1937년 「게르니카」를 그린 화가는?",
     choices: ["파블로 피카소", "살바도르 달리", "호안 미로", "프란시스코 고야"],
     answer: "파블로 피카소",
@@ -334,6 +370,7 @@ const QUESTIONS = [
   {
     id: "ac-07",
     category: "예술과 문화",
+    difficulty: "어려움",
     question: "1853년 베네치아 라 페니체 극장에서 초연된 오페라 「라 트라비아타」의 작곡가는?",
     choices: ["주세페 베르디", "자코모 푸치니", "조아키노 로시니", "리하르트 바그너"],
     answer: "주세페 베르디",
@@ -343,6 +380,7 @@ const QUESTIONS = [
   {
     id: "ac-08",
     category: "예술과 문화",
+    difficulty: "보통",
     question: "1969년부터 집필해 1994년에 완간한 대하소설 『토지』의 작가는?",
     choices: ["박경리", "박완서", "조정래", "최명희"],
     answer: "박경리",
@@ -352,6 +390,7 @@ const QUESTIONS = [
   {
     id: "ac-09",
     category: "예술과 문화",
+    difficulty: "보통",
     question: "'인상주의'라는 이름이 생기는 계기가 된 그림 「인상, 해돋이」를 그린 화가는?",
     choices: ["클로드 모네", "에두아르 마네", "오귀스트 르누아르", "에드가 드가"],
     answer: "클로드 모네",
@@ -361,6 +400,7 @@ const QUESTIONS = [
   {
     id: "ac-10",
     category: "예술과 문화",
+    difficulty: "쉬움",
     question: "제92회(2020년) 아카데미 시상식에서 작품상을 받은 한국 영화는?",
     choices: ["기생충", "괴물", "올드보이", "미나리"],
     answer: "기생충",

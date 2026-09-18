@@ -2,6 +2,7 @@
 
 // ===== 설정 =====
 const CATEGORIES = ["한국사", "세계지리", "과학", "예술과 문화"];
+const DIFFICULTIES = ["쉬움", "보통", "어려움"];
 const QUESTIONS_PER_ROUND = 10;
 
 // 모드별 규칙. 동작 코드는 모드 이름이 아니라 이 값들을 읽습니다.
@@ -71,6 +72,10 @@ function validateQuestions(questions) {
 
     if (CATEGORIES.includes(q.category)) counts[q.category] += 1;
     else errors.push(`${where}: 카테고리 "${q.category}"는 쓸 수 없습니다.`);
+
+    if (!DIFFICULTIES.includes(q.difficulty)) {
+      errors.push(`${where}: 난이도 "${q.difficulty}"는 쓸 수 없습니다(${DIFFICULTIES.join(", ")} 가운데 하나).`);
+    }
 
     for (const key of ["question", "answer", "explanation"]) {
       if (!isFilled(q[key])) errors.push(`${where}: ${key}가 비어 있습니다.`);
