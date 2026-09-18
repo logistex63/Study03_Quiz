@@ -110,6 +110,23 @@ button.link { background: none; border: none; padding: 4px; color: var(--accent)
 .wrong-list li { margin-bottom: 12px; }
 .wrong-list p { margin: 0; }
 
+.notice { margin: 8px 0; padding: 8px 12px; border-radius: var(--radius); font-weight: 600; }
+.notice-new { background: var(--correct-bg); color: var(--correct); }
+.notice-error { background: var(--wrong-bg); color: var(--wrong); }
+
 .actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 24px; }
 
 .error ul { color: var(--wrong); }
+
+.leaderboard .topbar h1 { margin: 0; color: var(--text); }
+
+.tabs { display: flex; flex-wrap: wrap; gap: 8px; margin: 16px 0; }
+.tab[aria-pressed="true"] { background: var(--accent); color: var(--accent-text); border-color: var(--accent); font-weight: 600; }
+
+.boards { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; }
+.board { padding: 12px 16px; border: 1px solid var(--border); border-radius: var(--radius); background: var(--surface); }
+.board h3 { margin-top: 0; }
+.board table { width: 100%; border-collapse: collapse; font-variant-numeric: tabular-nums; }
+.board th, .board td { padding: 6px 4px; border-bottom: 1px solid var(--border); text-align: left; }
+.board th { color: var(--muted); font-weight: 600; font-size: 0.9rem; }
+.empty { color: var(--muted); margin: 0; }

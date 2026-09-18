@@ -32,6 +32,10 @@ const MODES = {
   },
 };
 
+const STORAGE_KEY = "quiz.scores";
+const TOP_N = 5;
+const RANKED_MODES = Object.keys(MODES).filter((key) => MODES[key].ranked);
+
 // ===== 계산 함수 =====
 // 화면과 상관없는 함수들입니다. 콘솔에서 바로 불러 확인할 수 있습니다.
 
@@ -131,6 +135,93 @@ function pickHintRemovals(question, random = Math.random) {
   return shuffle(question.choices.filter((choice) => choice !== question.answer), random).slice(0, 2);
 }
 
+// 점수 높은 순 → 힌트 적은 순 → 먼저 세운 기록 순.
+function compareScores(a, b) {
+  return b.score - a.score || a.hintsUsed - b.hintsUsed || a.date.localeCompare(b.date);
+}
+
+function isValidScore(entry) {
+  return Boolean(entry)
+    && typeof entry === "object"
+    && CATEGORIES.includes(entry.category)
+    && RANKED_MODES.includes(entry.mode)
+    && Number.isFinite(entry.score)
+    && Number.isInteger(entry.hintsUsed)
+    && entry.hintsUsed >= 0
+    && typeof entry.date === "string"
+    && !Number.isNaN(Date.parse(entry.date));
+}
+
+// localStorage에서 읽은 문자열을 기록 배열로 바꿉니다. 깨진 값은 버립니다.
+function parseScores(raw) {
+  if (raw === null) return [];
+  let data;
+  try {
+    data = JSON.parse(raw);
+  } catch {
+    return [];
+  }
+  return Array.isArray(data) ? data.filter(isValidScore) : [];
+}
+
+function topScores(scores, category, mode) {
+  return scores
+    .filter((s) => s.category === category && s.mode === mode)
+    .sort(compareScores)
+    .slice(0, TOP_N);
+}
+
+// 새 기록을 더하고, 카테고리와 모드 조합마다 상위 5개만 남깁니다.
+function addScore(scores, entry) {
+  const all = [...scores, entry];
+  const kept = [];
+  for (const category of CATEGORIES) {
+    for (const mode of RANKED_MODES) kept.push(...topScores(all, category, mode));
+  }
+  return kept;
+}
+
+function rankOf(scores, entry) {
+  const index = topScores(scores, entry.category, entry.mode).indexOf(entry);
+  return index === -1 ? null : index + 1;
+}
+
+// 사용자 컴퓨터의 시간대 기준 날짜(YYYY-MM-DD).
+function formatDate(iso) {
+  const d = new Date(iso);
+  const pad = (n) => String(n).padStart(2, "0");
+  return `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}`;
+}
+
+// ===== 저장소 =====
+// 저장이 막힌 브라우저(시크릿 창, 저장소 차단 등)에서는 예외가 날 수 있어 모두 try/catch로 감쌉니다.
+
+function loadScores() {
+  try {
+    return { ok: true, scores: parseScores(localStorage.getItem(STORAGE_KEY)) };
+  } catch {
+    return { ok: false, scores: [] };
+  }
+}
+
+function saveScores(scores) {
+  try {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(scores));
+    return true;
+  } catch {
+    return false;
+  }
+}
+
+function clearScores() {
+  try {
+    localStorage.removeItem(STORAGE_KEY);
+    return true;
+  } catch {
+    return false;
+  }
+}
+
 // ===== 상태 =====
 const state = {
   screen: "start", // start | question | result | error
@@ -143,6 +234,8 @@ const state = {
   timerStartedAt: null,
   timerId: null,
   removed: [], // 힌트로 지운 보기
+  lastSave: null, // 방금 끝난 판의 저장 결과 { ok, rank }. 저장 대상이 아니면 null
+  boardCategory: CATEGORIES[0], // 순위표에서 보고 있는 카테고리
 };
 
 // ===== DOM 도우미 =====
@@ -172,6 +265,7 @@ function beginRound(round) {
   state.round = round;
   state.index = 0;
   state.records = [];
+  state.lastSave = null;
   state.screen = "question";
   showQuestion();
 }
@@ -224,9 +318,30 @@ function next() {
     state.index += 1;
     showQuestion();
   } else {
-    state.screen = "result";
-    render();
+    finishRound();
   }
+}
+
+// 10문제를 모두 푼 판만 여기로 옵니다. 도중에 그만둔 판은 저장하지 않습니다.
+function finishRound() {
+  state.screen = "result";
+  state.lastSave = MODES[state.mode].ranked ? recordScore() : null;
+  render();
+}
+
+function recordScore() {
+  const entry = {
+    category: state.category,
+    mode: state.mode,
+    score: scoreRound(state.records),
+    hintsUsed: state.records.filter((r) => r.hintUsed).length,
+    date: new Date().toISOString(),
+  };
+  const loaded = loadScores();
+  if (!loaded.ok) return { ok: false, rank: null };
+  const scores = addScore(loaded.scores, entry);
+  if (!saveScores(scores)) return { ok: false, rank: null };
+  return { ok: true, rank: rankOf(scores, entry) };
 }
 
 function goHome() {
@@ -238,6 +353,17 @@ function goHome() {
 function retryWrong() {
   const wrong = state.round.filter((q, i) => !state.records[i].correct);
   beginRound(buildRound(state.category, wrong));
+}
+
+function openLeaderboard() {
+  state.screen = "leaderboard";
+  render();
+}
+
+function clearAllScores() {
+  if (!window.confirm("모든 기록을 지울까요? 되돌릴 수 없습니다.")) return;
+  if (!clearScores()) window.alert("기록을 지울 수 없습니다.");
+  render();
 }
 
 // ===== 화면 =====
@@ -269,7 +395,9 @@ function renderStart() {
         el("span", {},
           el("strong", {}, mode.label),
           el("span", { class: "option-desc" }, mode.description))))),
-    el("button", { type: "button", class: "primary", "data-focus": "", onclick: startRound }, "시작"));
+    el("div", { class: "actions" },
+      el("button", { type: "button", class: "primary", "data-focus": "", onclick: startRound }, "시작"),
+      el("button", { type: "button", onclick: openLeaderboard }, "순위표")));
 }
 
 function renderQuestion() {
@@ -346,6 +474,7 @@ function renderResult() {
     el("h1", {}, `${state.category} · ${mode.label} 결과`),
     el("p", { class: "score" }, `${formatScore(score)} / ${state.round.length}`),
     mode.hint ? el("p", { class: "lead" }, `힌트 ${hintsUsed}번 사용`) : null,
+    renderSaveNotice(),
     wrong.length === 0
       ? el("p", {}, "모두 맞혔습니다!")
       : el("div", {},
@@ -362,6 +491,57 @@ function renderResult() {
       el("button", { type: "button", onclick: goHome }, "처음으로")));
 }
 
+function renderSaveNotice() {
+  const save = state.lastSave;
+  if (save === null) return null;
+  if (!save.ok) return el("p", { class: "notice notice-error" }, "기록을 저장할 수 없습니다");
+  if (save.rank !== null) return el("p", { class: "notice notice-new" }, `새 기록! ${save.rank}위`);
+  return null;
+}
+
+function renderLeaderboard() {
+  const { ok, scores } = loadScores();
+  return el("section", { class: "screen leaderboard" },
+    el("div", { class: "topbar" },
+      el("h1", {}, "순위표"),
+      el("button", { type: "button", class: "link", onclick: goHome }, "처음으로")),
+    el("p", { class: "lead" }, "스피드·힌트 모드로 끝낸 판의 상위 5개 기록입니다. 연습 모드는 기록하지 않습니다."),
+    el("div", { class: "tabs" },
+      CATEGORIES.map((category) => el("button", {
+        type: "button",
+        class: "tab",
+        "aria-pressed": String(category === state.boardCategory),
+        onclick: () => { state.boardCategory = category; render(); },
+      }, category))),
+    ok
+      ? el("div", { class: "boards" }, RANKED_MODES.map((mode) => renderBoard(scores, state.boardCategory, mode)))
+      : el("p", { class: "notice notice-error" }, "기록을 저장할 수 없습니다"),
+    ok
+      ? el("div", { class: "actions" },
+        el("button", { type: "button", onclick: clearAllScores }, "기록 모두 지우기"))
+      : null);
+}
+
+function renderBoard(scores, category, mode) {
+  const rows = topScores(scores, category, mode);
+  const showHints = MODES[mode].hint;
+  return el("section", { class: "board" },
+    el("h3", {}, `${MODES[mode].label} 모드`),
+    rows.length === 0
+      ? el("p", { class: "empty" }, "아직 기록이 없습니다")
+      : el("table", {},
+        el("thead", {}, el("tr", {},
+          el("th", { scope: "col" }, "순위"),
+          el("th", { scope: "col" }, "점수"),
+          showHints ? el("th", { scope: "col" }, "힌트") : null,
+          el("th", { scope: "col" }, "날짜"))),
+        el("tbody", {}, rows.map((row, i) => el("tr", {},
+          el("td", {}, `${i + 1}위`),
+          el("td", {}, `${formatScore(row.score)} / ${QUESTIONS_PER_ROUND}`),
+          showHints ? el("td", {}, `${row.hintsUsed}번`) : null,
+          el("td", {}, formatDate(row.date)))))));
+}
+
 function renderError() {
   return el("section", { class: "screen error" },
     el("h1", {}, "문항 자료에 오류가 있습니다"),
@@ -373,6 +553,7 @@ const SCREENS = {
   start: renderStart,
   question: renderQuestion,
   result: renderResult,
+  leaderboard: renderLeaderboard,
   error: renderError,
 };
 
