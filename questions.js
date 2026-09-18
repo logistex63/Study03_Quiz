@@ -38,7 +38,7 @@ const QUESTIONS = [
     question: "고려 후기의 승려 일연이 고조선부터 후삼국까지의 이야기를 모아 편찬한 역사서는?",
     choices: ["삼국유사", "삼국사기", "고려사", "동국통감"],
     answer: "삼국유사",
-    explanation: "『삼국유사』는 1281년(충렬왕 7)경 고려 승려 일연이 편찬한 역사서다.",
+    explanation: "『삼국유사』는 고려 충렬왕 때 승려 일연이 편찬한 역사서다.",
     source: { title: "삼국유사 - 한국민족문화대백과사전", url: "https://encykorea.aks.ac.kr/Article/E0026482" },
   },
   {
