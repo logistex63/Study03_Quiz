@@ -49,11 +49,11 @@ const QUESTIONS = [
   {
     id: "kh-06",
     category: "한국사",
-    question: "1919년 4월 11일 대한민국 임시정부가 처음 수립된 도시는?",
-    choices: ["상하이", "충칭", "베이징", "블라디보스토크"],
+    question: "1919년 4월 11일에 수립된 대한민국 임시정부가 있던 도시는?",
+    choices: ["상하이", "도쿄", "베이징", "블라디보스토크"],
     answer: "상하이",
-    explanation: "대한민국 임시정부는 1919년 4월 11일 중국 상하이에서 수립되었다.",
-    source: { title: "대한민국 임시정부 - 한국민족문화대백과사전", url: "https://encykorea.aks.ac.kr/Article/E0015017" },
+    explanation: "임시정부는 1919년 4월 11일 중국 상하이에서 수립되었다(정부 기념일은 2019년부터 4월 11일로 정함).",
+    source: { title: "대한민국 임시정부 수립 기념일 - 한국민족문화대백과사전", url: "https://encykorea.aks.ac.kr/Article/E0080590" },
   },
   {
     id: "kh-07",
@@ -251,11 +251,11 @@ const QUESTIONS = [
   {
     id: "sc-08",
     category: "과학",
-    question: "1928년 최초의 항생제인 페니실린을 발견한 과학자는?",
+    question: "1928년 푸른곰팡이에서 페니실린을 발견한 과학자는?",
     choices: ["알렉산더 플레밍", "루이 파스퇴르", "로베르트 코흐", "에드워드 제너"],
     answer: "알렉산더 플레밍",
-    explanation: "미국 국립의학도서관에 따르면 알렉산더 플레밍은 1928년 페니실린을 발견했다.",
-    source: { title: "Alexander Fleming - U.S. National Library of Medicine", url: "https://www.nlm.nih.gov/exhibition/fromdnatobeer/digitalgallery/detail-B07927.html" },
+    explanation: "플레밍은 1928년 푸른곰팡이 주변에서 세균이 자라지 않는 것을 보고 페니실린을 발견했다.",
+    source: { title: "The Discovery of Penicillin—New Insights After More Than 75 Years of Clinical Use (PMC)", url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC5403050/" },
   },
   {
     id: "sc-09",
