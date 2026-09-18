@@ -68,7 +68,7 @@ const QUESTIONS = [
     question: "조선의 기본 법전인 『경국대전』을 완성해 시행한 왕은?",
     choices: ["성종", "세종", "태조", "영조"],
     answer: "성종",
-    explanation: "성종은 즉위 후 『경국대전』을 다시 수정해 1471년 1월 1일부터 시행했다.",
+    explanation: "『경국대전』은 세조 때 편찬을 시작해 성종 때 완성·시행되었다.",
     source: { title: "경국대전 - 한국민족문화대백과사전", url: "https://encykorea.aks.ac.kr/Article/E0002296" },
   },
   {
@@ -120,7 +120,7 @@ const QUESTIONS = [
     question: "현재 국토 면적을 기준으로 세계에서 가장 넓은 나라는?",
     choices: ["러시아", "캐나다", "중국", "미국"],
     answer: "러시아",
-    explanation: "러시아는 세계에서 가장 넓은 나라로, 지구 육지의 약 10분의 1을 차지한다.",
+    explanation: "러시아는 국토 면적이 세계에서 가장 넓은 나라다.",
     source: { title: "Russia - National Geographic Kids", url: "https://kids.nationalgeographic.com/geography/countries/article/russia" },
   },
   {
@@ -130,17 +130,17 @@ const QUESTIONS = [
     question: "유엔(UN) 추계에 따르면 2023년에 중국을 제치고 인구가 가장 많은 나라가 된 곳은?",
     choices: ["인도", "인도네시아", "미국", "파키스탄"],
     answer: "인도",
-    explanation: "유엔은 2023년 4월 말 인도 인구가 약 14억 2,578만 명으로 중국을 넘어선다고 밝혔다.",
+    explanation: "유엔은 2023년에 인도 인구가 중국을 넘어서 세계에서 가장 많아진다고 추계했다.",
     source: { title: "India poised to become world's most populous nation - UN News (2023)", url: "https://news.un.org/en/story/2023/04/1135967" },
   },
   {
     id: "wg-03",
     category: "세계지리",
     difficulty: "보통",
-    question: "오스트레일리아의 수도는?",
+    question: "현재 오스트레일리아의 수도는?",
     choices: ["캔버라", "시드니", "멜버른", "브리즈번"],
     answer: "캔버라",
-    explanation: "오스트레일리아의 수도는 캔버라이며, 가장 큰 도시인 시드니와는 다르다.",
+    explanation: "오스트레일리아의 수도는 캔버라이며, 시드니와 멜버른은 수도가 아니다.",
     source: { title: "Australia - National Geographic Kids", url: "https://kids.nationalgeographic.com/geography/countries/article/australia" },
   },
   {
@@ -282,7 +282,7 @@ const QUESTIONS = [
     question: "1905년 논문에서 질량과 에너지의 관계(E=mc²)를 이끌어 낸 과학자는?",
     choices: ["아인슈타인", "뉴턴", "보어", "맥스웰"],
     answer: "아인슈타인",
-    explanation: "아인슈타인은 1905년 9월 특수 상대성 이론의 결과로 E=mc²를 이끌어 냈다.",
+    explanation: "아인슈타인은 1905년 특수 상대성 이론의 결과로 E=mc²를 이끌어 냈다.",
     source: { title: "September 1905: Energy and Mass are Equivalent - American Physical Society", url: "https://www.aps.org/apsnews/2005/04/september-1905-energy-mass-equivalent" },
   },
   {
