@@ -75,15 +75,20 @@ button.link { background: none; border: none; padding: 4px; color: var(--accent)
 .options legend { font-weight: 600; padding: 0 4px; }
 .option { display: flex; align-items: flex-start; gap: 8px; padding: 6px 0; cursor: pointer; }
 .option input { margin-top: 0.4em; }
+.option-desc { display: block; color: var(--muted); font-size: 0.9rem; }
 
 .topbar { display: flex; align-items: center; gap: 12px; color: var(--muted); flex-wrap: wrap; }
 .topbar .link { margin-left: auto; }
+
+.timer { margin: 0 0 12px; font-weight: 700; font-variant-numeric: tabular-nums; color: var(--accent); }
 
 .choices { display: grid; gap: 10px; }
 .choice { width: 100%; text-align: left; overflow-wrap: anywhere; }
 .choice:not(:disabled):hover { border-color: var(--accent); }
 .choice.correct { background: var(--correct-bg); border-color: var(--correct); color: var(--correct); font-weight: 600; }
 .choice.wrong { background: var(--wrong-bg); border-color: var(--wrong); color: var(--wrong); }
+.choice.removed { opacity: 0.4; text-decoration: line-through; }
+.hint-button { margin: 0 0 12px; }
 
 .feedback {
   margin-top: 16px;
