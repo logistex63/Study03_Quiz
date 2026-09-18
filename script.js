@@ -91,16 +91,17 @@ function validateQuestions(questions) {
   });
 
   for (const category of CATEGORIES) {
-    if (counts[category] !== QUESTIONS_PER_ROUND) {
-      errors.push(`${category}: 문항이 ${counts[category]}개입니다(${QUESTIONS_PER_ROUND}개여야 함).`);
+    if (counts[category] < QUESTIONS_PER_ROUND) {
+      errors.push(`${category}: 문항이 ${counts[category]}개입니다(${QUESTIONS_PER_ROUND}개 이상이어야 함).`);
     }
   }
   return errors;
 }
 
-// 한 판에 쓸 문항: 카테고리로 거르고, 문항 순서와 보기 순서를 섞은 복사본.
+// 한 판에 쓸 문항: 카테고리로 거르고, 섞은 뒤 앞에서 10개를 뽑고, 보기 순서도 섞은 복사본.
 function buildRound(category, questions, random = Math.random) {
   return shuffle(questions.filter((q) => q.category === category), random)
+    .slice(0, QUESTIONS_PER_ROUND)
     .map((q) => ({ ...q, choices: shuffle(q.choices, random) }));
 }
 
