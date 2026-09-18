@@ -101,6 +101,16 @@ const QUESTIONS = [
     explanation: "『직지』는 현존하는 가장 오래된 금속활자 인쇄물로 2001년 세계기록유산이 되었다.",
     source: { title: "불조직지심체요절 - 한국민족문화대백과사전", url: "https://encykorea.aks.ac.kr/Article/E0025035" },
   },
+  {
+    id: "kh-11",
+    category: "한국사",
+    difficulty: "보통",
+    question: "1907년 네덜란드 헤이그의 제2회 만국평화회의에 이상설·이준·이위종을 특사로 보내 을사늑약의 부당함을 알리려 한 대한제국의 황제는?",
+    choices: ["고종", "순종", "철종", "헌종"],
+    answer: "고종",
+    explanation: "고종은 1907년 헤이그 만국평화회의에 이상설·이준·이위종을 보내 을사늑약이 무효임을 국제 사회에 호소하려 했다.",
+    source: { title: "헤이그 특사 사건 - 한국민족문화대백과사전", url: "https://encykorea.aks.ac.kr/Article/E0063241" },
+  },
 
   // ===== 세계지리 =====
   {
@@ -202,6 +212,16 @@ const QUESTIONS = [
     answer: "이집트",
     explanation: "수에즈 운하는 이집트에 있으며 1869년에 개통되어 지중해와 홍해를 잇는다.",
     source: { title: "Canal History - Suez Canal Authority", url: "https://www.suezcanal.gov.eg/English/About/SuezCanal/Pages/CanalHistory.aspx" },
+  },
+  {
+    id: "wg-11",
+    category: "세계지리",
+    difficulty: "보통",
+    question: "아프리카 동북부를 북쪽으로 흐르는 나일강이 이집트에서 흘러 들어가는 바다는?",
+    choices: ["지중해", "홍해", "인도양", "카스피해"],
+    answer: "지중해",
+    explanation: "나일강은 이집트 북부에서 삼각주를 이룬 뒤 지중해로 흘러 들어간다.",
+    source: { title: "Nile River - National Geographic Education", url: "https://education.nationalgeographic.org/resource/nile-river/" },
   },
 
   // ===== 과학 =====
@@ -305,6 +325,16 @@ const QUESTIONS = [
     explanation: "소리는 매질이 있어야 전달되는 역학적 파동이라 매질이 없는 진공에서는 전달되지 않는다.",
     source: { title: "Anatomy of an Electromagnetic Wave - NASA Science", url: "https://science.nasa.gov/ems/02_anatomy/" },
   },
+  {
+    id: "sc-11",
+    category: "과학",
+    difficulty: "보통",
+    question: "적혈구 속에서 산소와 결합해 온몸으로 산소를 운반하는 단백질은?",
+    choices: ["헤모글로빈", "인슐린", "케라틴", "콜라겐"],
+    answer: "헤모글로빈",
+    explanation: "헤모글로빈은 적혈구 안에 있는 단백질로, 폐에서 산소와 결합해 몸의 조직으로 산소를 나른다.",
+    source: { title: "Hemoglobin - MedlinePlus Medical Encyclopedia", url: "https://medlineplus.gov/ency/article/003645.htm" },
+  },
 
   // ===== 예술과 문화 =====
   {
@@ -406,5 +436,15 @@ const QUESTIONS = [
     answer: "기생충",
     explanation: "봉준호 감독의 「기생충」은 2020년 제92회 아카데미 시상식에서 작품상을 받았다.",
     source: { title: "The 92nd Academy Awards (2020) - Oscars.org", url: "https://www.oscars.org/oscars/ceremonies/2020" },
+  },
+  {
+    id: "ac-11",
+    category: "예술과 문화",
+    difficulty: "보통",
+    question: "교황 율리우스 2세의 의뢰로 바티칸 시스티나 성당의 천장화를 그린 화가는?",
+    choices: ["미켈란젤로", "라파엘로", "산드로 보티첼리", "티치아노"],
+    answer: "미켈란젤로",
+    explanation: "미켈란젤로는 1508년 율리우스 2세의 의뢰를 받아 시스티나 성당 천장에 창세기 이야기를 그렸다.",
+    source: { title: "The Sistine Chapel - Vatican Museums", url: "https://vatican.museum/the-museum/the-sistine-chapel" },
   },
 ];
