@@ -8,7 +8,7 @@ const QUESTIONS = [
     question: "1443년에 훈민정음을 창제한 조선의 왕은?",
     choices: ["세종", "태종", "세조", "성종"],
     answer: "세종",
-    explanation: "세종은 1443년 12월 훈민정음을 창제하고 1446년에 반포했다.",
+    explanation: "세종은 1443년 12월 훈민정음을 창제하고, 1446년 해설서 『훈민정음』(해례본)을 펴냈다.",
     source: { title: "한글 - 한국민족문화대백과사전", url: "https://encykorea.aks.ac.kr/Article/E0061508" },
   },
   {
@@ -58,7 +58,7 @@ const QUESTIONS = [
     question: "1919년 4월 11일에 수립된 대한민국 임시정부가 있던 도시는?",
     choices: ["상하이", "도쿄", "베이징", "블라디보스토크"],
     answer: "상하이",
-    explanation: "임시정부는 1919년 4월 11일 중국 상하이에서 수립되었다(정부 기념일은 2019년부터 4월 11일로 정함).",
+    explanation: "임시정부는 1919년 4월 11일 중국 상하이에서 수립되었다(정부 기념일도 4월 13일에서 4월 11일로 바뀜).",
     source: { title: "대한민국 임시정부 수립 기념일 - 한국민족문화대백과사전", url: "https://encykorea.aks.ac.kr/Article/E0080590" },
   },
   {
@@ -414,7 +414,7 @@ const QUESTIONS = [
     question: "1969년부터 집필해 1994년에 완간한 대하소설 『토지』의 작가는?",
     choices: ["박경리", "박완서", "조정래", "최명희"],
     answer: "박경리",
-    explanation: "박경리는 1969년 집필을 시작해 1994년 『토지』 전 5부 16권을 완간했다.",
+    explanation: "박경리는 1969년 집필을 시작해 1994년 『토지』 전 5부를 완간했다.",
     source: { title: "토지 - 한국민족문화대백과사전", url: "https://encykorea.aks.ac.kr/Article/E0059209" },
   },
   {
@@ -424,7 +424,7 @@ const QUESTIONS = [
     question: "'인상주의'라는 이름이 생기는 계기가 된 그림 「인상, 해돋이」를 그린 화가는?",
     choices: ["클로드 모네", "에두아르 마네", "오귀스트 르누아르", "에드가 드가"],
     answer: "클로드 모네",
-    explanation: "모네가 붙인 제목 「인상」에서 비평가 르루아가 '인상주의자'라는 말을 만들었다.",
+    explanation: "비평가 르루아가 모네의 제목 「인상」을 비꼬아 쓴 기사 「인상주의자들의 전시회」가 이름의 계기가 되었다.",
     source: { title: "Impression, soleil levant - Musée Marmottan Monet", url: "https://www.marmottan.fr/en/notice/4014/" },
   },
   {
@@ -445,6 +445,6 @@ const QUESTIONS = [
     choices: ["미켈란젤로", "라파엘로", "산드로 보티첼리", "티치아노"],
     answer: "미켈란젤로",
     explanation: "미켈란젤로는 1508년 율리우스 2세의 의뢰를 받아 시스티나 성당 천장에 창세기 이야기를 그렸다.",
-    source: { title: "The Sistine Chapel - Vatican Museums", url: "https://vatican.museum/the-museum/the-sistine-chapel" },
+    source: { title: "Sistine Chapel - Musei Vaticani", url: "https://www.museivaticani.va/content/museivaticani/en/collezioni/musei/cappella-sistina/storia-cappella-sistina.html" },
   },
 ];
