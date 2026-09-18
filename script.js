@@ -114,8 +114,114 @@ function el(tag, props = {}, ...children) {
 }
 
 // ===== 동작 =====
+function startRound() {
+  beginRound(buildRound(state.category, QUESTIONS));
+}
+
+function beginRound(round) {
+  state.round = round;
+  state.index = 0;
+  state.records = [];
+  state.screen = "question";
+  render();
+}
+
+function answer(choice) {
+  if (state.records[state.index]) return; // 이미 답한 문항
+  state.records[state.index] = gradeAnswer(state.round[state.index], choice);
+  render();
+}
+
+function next() {
+  if (state.index < state.round.length - 1) {
+    state.index += 1;
+  } else {
+    state.screen = "result";
+  }
+  render();
+}
+
+function goHome() {
+  state.screen = "start";
+  render();
+}
 
 // ===== 화면 =====
+function renderStart() {
+  return el("section", { class: "screen start" },
+    el("h1", {}, "상식 퀴즈"),
+    el("p", { class: "lead" }, "카테고리를 고르고 시작하세요. 한 판은 10문제입니다."),
+    el("fieldset", { class: "options" },
+      el("legend", {}, "카테고리"),
+      CATEGORIES.map((category) => el("label", { class: "option" },
+        el("input", {
+          type: "radio",
+          name: "category",
+          value: category,
+          checked: category === state.category,
+          onchange: () => { state.category = category; },
+        }),
+        el("span", {}, category)))),
+    el("button", { type: "button", class: "primary", "data-focus": "", onclick: startRound }, "시작"));
+}
+
+function renderQuestion() {
+  const q = state.round[state.index];
+  const record = state.records[state.index];
+  const isLast = state.index === state.round.length - 1;
+  return el("section", { class: "screen question" },
+    el("div", { class: "topbar" },
+      el("span", { class: "progress" }, `${state.index + 1} / ${state.round.length}`),
+      el("span", {}, state.category),
+      el("button", { type: "button", class: "link", onclick: goHome }, "처음으로")),
+    el("h2", { class: "question-text" }, q.question),
+    el("div", { class: "choices" }, q.choices.map((choice, index) => renderChoice(q, choice, index, record))),
+    record ? renderFeedback(q, record, isLast) : null);
+}
+
+function renderChoice(q, choice, index, record) {
+  let className = "choice";
+  let mark = "";
+  if (record && choice === q.answer) {
+    className += " correct";
+    mark = "✔ ";
+  } else if (record && choice === record.chosen) {
+    className += " wrong";
+    mark = "✘ ";
+  }
+  const props = { type: "button", class: className, disabled: Boolean(record), onclick: () => answer(choice) };
+  if (!record && index === 0) props["data-focus"] = "";
+  return el("button", props, mark, choice);
+}
+
+function renderFeedback(q, record, isLast) {
+  return el("div", { class: `feedback ${record.correct ? "is-correct" : "is-wrong"}` },
+    el("p", { class: "verdict" }, record.correct ? "정답입니다" : "오답입니다"),
+    el("p", { class: "explanation" }, q.explanation),
+    el("p", { class: "source" }, "출처: ",
+      el("a", { href: q.source.url, target: "_blank", rel: "noopener noreferrer" }, q.source.title)),
+    el("button", { type: "button", class: "primary", "data-focus": "", onclick: next }, isLast ? "결과 보기" : "다음"));
+}
+
+function renderResult() {
+  const score = scoreRound(state.records);
+  const wrong = state.round.filter((q, i) => !state.records[i].correct);
+  return el("section", { class: "screen result" },
+    el("h1", {}, `${state.category} 결과`),
+    el("p", { class: "score" }, `${formatScore(score)} / ${state.round.length}`),
+    wrong.length === 0
+      ? el("p", {}, "모두 맞혔습니다!")
+      : el("div", {},
+        el("h3", {}, `틀린 문제 ${wrong.length}개`),
+        el("ol", { class: "wrong-list" }, wrong.map((q) => el("li", {},
+          el("p", { class: "wrong-q" }, q.question),
+          el("p", {}, "정답: ", el("strong", {}, q.answer)),
+          el("p", { class: "explanation" }, q.explanation))))),
+    el("div", { class: "actions" },
+      el("button", { type: "button", class: "primary", "data-focus": "", onclick: startRound }, "다시 하기"),
+      el("button", { type: "button", onclick: goHome }, "처음으로")));
+}
+
 function renderError() {
   return el("section", { class: "screen error" },
     el("h1", {}, "문항 자료에 오류가 있습니다"),
@@ -124,6 +230,9 @@ function renderError() {
 }
 
 const SCREENS = {
+  start: renderStart,
+  question: renderQuestion,
+  result: renderResult,
   error: renderError,
 };
 
